@@ -21,6 +21,11 @@
         <v-card-text>
           <v-container>
             <v-row>
+              <v-col cols="6">
+                <v-text-field label="Auteur" required v-model="taskAuthor"></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
               <v-col cols="12">
                 <v-text-field label="Titre de la tâche" required v-model="taskTitle"></v-text-field>
               </v-col>
@@ -62,12 +67,13 @@ export default {
     dialog: false,
     taskTitle: "",
     taskDesc: "",
+    taskAuthor: ""
   }),
 
   methods: {
     validate() {
       if (this.taskTitle.length > 0 && this.taskDesc.length > 0) {
-        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, color: this.state.color}
+        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, author: this.taskAuthor, color: this.state.color}
         this.index++;
         this.todo.push(item);
         this.dialog = false;
