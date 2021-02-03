@@ -79,6 +79,7 @@ export default {
         id: this.task.id,
         title: this.task.title,
         desc: this.task.desc,
+        author: this.task.author,
         color: this.nextStateConf.color,
         taskTypes: this.task.taskTypes
       };
