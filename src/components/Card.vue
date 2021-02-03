@@ -1,7 +1,7 @@
 <template>
   <v-dialog
       v-model="dialog"
-      max-width="500px"
+      max-width="700px"
       content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
@@ -10,20 +10,29 @@
         <v-card-text>{{ task.desc }}</v-card-text>
       </v-card>
     </template>
-    <v-card max-width="100px">
-      <v-tooltip bottom v-if="isLast !== true">
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="upgrade" v-on="on" class="inside-icon"><v-icon>mdi-arrow-up-box</v-icon></v-btn>
-        </template>
-        <span>Upgrade la tâche</span>
-      </v-tooltip>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="deleteTask" v-on="on" class="inside-icon"><v-icon>mdi-delete</v-icon></v-btn>
-        </template>
-        <span>Supprimer la tâche</span>
-      </v-tooltip>
-    </v-card>
+    <v-row>
+      <v-col cols="3">
+        <v-card>
+          <v-tooltip bottom v-if="isLast !== true">
+            <template v-slot:activator="{ on }">
+              <v-btn icon @click="upgrade" v-on="on" class="inside-icon"><v-icon>mdi-arrow-up-box</v-icon></v-btn>
+            </template>
+            <span>Upgrade la tâche</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn icon @click="deleteTask" v-on="on" class="inside-icon"><v-icon>mdi-delete</v-icon></v-btn>
+            </template>
+            <span>Supprimer la tâche</span>
+          </v-tooltip>
+        </v-card>
+      </v-col>
+      <v-col cols="9">
+        <v-card class="card-task-types">
+          <TaskTypeList :tags="task.taskTypes"/>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-card class="mt-4" elevation="4">
       <div class="btn-action">
       </div>
@@ -54,6 +63,7 @@
 </template>
 
 <script>
+import TaskTypeList from "@/components/TaskTypeList";
 export default {
   name: "Card",
 
@@ -90,6 +100,9 @@ export default {
         'border-top': 'solid 2px ' + this.task.color
       }
     }
+  },
+  components: {
+    TaskTypeList
   }
 }
 </script>

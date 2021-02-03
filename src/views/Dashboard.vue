@@ -63,7 +63,20 @@ export default {
         desc: 'Exemple de description',
         author: "Author 1",
         color: 'blue',
-        taskTypes: []
+        taskTypes: [
+          {
+            id: 1,
+            label: "Développement",
+          },
+          {
+            id: 2,
+            label: "Correction de bug",
+          },
+          {
+            id: 3,
+            label: "Review de code",
+          }
+        ]
       }
     ],
     inProgress: [

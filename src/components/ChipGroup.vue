@@ -49,7 +49,6 @@ export default {
       if (isTagInArray.length === 0) {
         this.selectedTypes.push(tag);
       } else {
-        console.log(this.selectedTypes.indexOf(tag));
         this.selectedTypes.splice(this.selectedTypes.indexOf(tag), 1);
       }
     }

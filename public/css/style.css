@@ -59,3 +59,11 @@ body {
     color: #1867c0 !important;
     caret-color: #1867c0 !important;
 }
+.card-task-types {
+    padding: 5px;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.card-task-types .v-chip {
+    margin: 2px !important;
+}
