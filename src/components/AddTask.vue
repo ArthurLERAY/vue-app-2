@@ -59,7 +59,7 @@
         </v-card>
       </v-col>
       <v-col cols="5">
-        <ChipGroup :tags="taskTypes" :color="state.color"/>
+        <ChipGroup :tags="taskTypes" :color="state.color" :selectedTypes="selectedTypes"/>
       </v-col>
     </v-row>
   </v-dialog>
@@ -78,18 +78,19 @@ export default {
     taskAuthor: "",
     taskTypes: [
       {
+        id: 1,
         label: "Développement",
-        color: "orange"
       },
       {
+        id: 2,
         label: "Correction de bug",
-        color: "red"
       },
       {
+        id: 3,
         label: "Review de code",
-        color: "blue"
       }
-    ]
+    ],
+    selectedTypes: []
   }),
 
   components: {
@@ -99,7 +100,7 @@ export default {
   methods: {
     validate() {
       if (this.taskTitle.length > 0 && this.taskDesc.length > 0) {
-        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, author: this.taskAuthor, color: this.state.color}
+        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, author: this.taskAuthor, color: this.state.color, taskTypes: this.selectedTypes}
         this.index++;
         this.todo.push(item);
         this.dialog = false;

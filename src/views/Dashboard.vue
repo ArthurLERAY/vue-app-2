@@ -62,7 +62,8 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 1",
-        color: 'blue'
+        color: 'blue',
+        taskTypes: []
       }
     ],
     inProgress: [
@@ -71,7 +72,8 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 2",
-        color: 'orange'
+        color: 'orange',
+        taskTypes: []
       }
     ],
     finished: [
@@ -80,7 +82,8 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 1",
-        color: 'green'
+        color: 'green',
+        taskTypes: []
       }
     ],
   }),

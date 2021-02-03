@@ -22,7 +22,8 @@
           >
             <v-chip
                 v-for="tag in tags"
-                :key="tag"
+                :key="tag.id"
+                @click="addTaskType(tag)"
             >
               {{ tag.label }}
             </v-chip>
@@ -36,7 +37,28 @@
 <script>
 export default {
   name: "ChipGroup",
-  props: ['tags', 'color'],
+  props: ['tags', 'color', 'selectedTypes'],
+
+  data: () => ({
+    tagToRemoveIndex: 0,
+  }),
+
+  methods: {
+    addTaskType(tag) {
+      const isTagInArray = this.selectedTypes.map(x => {
+        if (x.id === tag.id) {
+          this.tagToRemoveIndex = this.selectedTypes.indexOf(x);
+          return true;
+        }
+      });
+      if (!isTagInArray) {
+        this.selectedTypes.push(tag);
+      } else {
+        this.selectedTypes.slice(this.tagToRemoveIndex, 1);
+      }
+      console.log(this.selectedTypes);
+    }
+  },
 
   computed: {
     sheetColor() {
