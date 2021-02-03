@@ -37,7 +37,7 @@
 <script>
 export default {
   name: "ChipGroup",
-  props: ['tags', 'color', 'selectedTypes'],
+  props: ['tags', 'color', 'taskTypes', 'selectedTypes'],
 
   data: () => ({
     tagToRemoveIndex: 0,
@@ -45,18 +45,13 @@ export default {
 
   methods: {
     addTaskType(tag) {
-      const isTagInArray = this.selectedTypes.map(x => {
-        if (x.id === tag.id) {
-          this.tagToRemoveIndex = this.selectedTypes.indexOf(x);
-          return true;
-        }
-      });
-      if (!isTagInArray) {
+      const isTagInArray = this.selectedTypes.filter(x => x.id === tag.id);
+      if (isTagInArray.length === 0) {
         this.selectedTypes.push(tag);
       } else {
-        this.selectedTypes.slice(this.tagToRemoveIndex, 1);
+        console.log(this.selectedTypes.indexOf(tag));
+        this.selectedTypes.splice(this.selectedTypes.indexOf(tag), 1);
       }
-      console.log(this.selectedTypes);
     }
   },
 
