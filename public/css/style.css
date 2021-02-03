@@ -42,6 +42,7 @@ body {
 }
 .v-dialog {
     box-shadow: none !important;
+    overflow: hidden !important;
 }
 .t-xl {
     border-radius: 30px;

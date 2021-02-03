@@ -5,7 +5,7 @@
       content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
-      <v-card draggable v-on="on" tile class="inside-card" :style="lineColor">
+      <v-card v-on="on" tile class="inside-card" :style="lineColor">
         <v-card-title>{{ task.title }}</v-card-title>
         <v-card-text>{{ task.desc }}</v-card-text>
       </v-card>
