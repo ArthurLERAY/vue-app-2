@@ -64,9 +64,6 @@ export default {
   }),
 
   methods: {
-    test() {
-      console.log('test');
-    },
     upgrade() {
       const item = {
         id: this.task.id,

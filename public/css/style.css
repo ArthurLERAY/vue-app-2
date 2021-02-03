@@ -43,3 +43,15 @@ body {
 .v-dialog {
     box-shadow: none !important;
 }
+.t-xl {
+    border-radius: 30px;
+}
+.pa-4 {
+    padding: 4px;
+}
+.rounded-sheet {
+    border-radius: 12px !important;
+}
+.rounded-top-sheet {
+    border-radius: 12px 12px 0 0 !important;
+}
