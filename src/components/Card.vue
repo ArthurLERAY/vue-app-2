@@ -2,38 +2,34 @@
   <v-dialog
       v-model="dialog"
       max-width="500px"
+      content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
-      <v-card v-on="on" tile class="inside-card" :style="lineColor">
+      <v-card draggable v-on="on" tile class="inside-card" :style="lineColor">
         <v-card-title>{{ task.title }}</v-card-title>
         <v-card-text>{{ task.desc }}</v-card-text>
       </v-card>
     </template>
-    <v-card>
+    <v-card max-width="100px">
+      <v-tooltip bottom v-if="isLast !== true">
+        <template v-slot:activator="{ on }">
+          <v-btn icon @click="upgrade" v-on="on" class="inside-icon"><v-icon>mdi-arrow-up-box</v-icon></v-btn>
+        </template>
+        <span>Upgrade la tâche</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon @click="deleteTask" v-on="on" class="inside-icon"><v-icon>mdi-delete</v-icon></v-btn>
+        </template>
+        <span>Supprimer la tâche</span>
+      </v-tooltip>
+    </v-card>
+    <v-card class="mt-4" elevation="4">
+      <div class="btn-action">
+      </div>
       <v-card-title>
         <v-col cols="12" class="float-left" justify="left">
-          <v-col cols="12" class="float-left">
-            <h3>{{ task.title }}</h3>
-          </v-col>
-          <v-row>
-            <v-col cols="8" class="float-left justify-left">
-              <p class="float-left"><u>{{ task.author }}</u></p>
-            </v-col>
-            <v-col cols="4" class="float-right justify-right">
-              <v-tooltip bottom v-if="isLast !== true">
-                <template v-slot:activator="{ on }">
-                  <v-icon @click="upgrade" v-on="on" class="inside-icon">mdi-arrow-up-box</v-icon>
-                </template>
-                <span>Upgrade la tâche</span>
-              </v-tooltip>
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <v-icon @click="deleteTask" v-on="on" class="inside-icon">mdi-delete</v-icon>
-                </template>
-                <span>Supprimer la tâche</span>
-              </v-tooltip>
-            </v-col>
-          </v-row>
+          <h3>{{ task.title }}</h3>
         </v-col>
       </v-card-title>
       <v-divider></v-divider>
@@ -41,6 +37,9 @@
         {{ task.desc }}
       </v-card-text>
       <v-card-actions>
+        <v-col cols="8" class="float-left justify-left">
+          <p class="float-left"><u>{{ task.author }}</u></p>
+        </v-col>
         <v-spacer></v-spacer>
         <v-btn
             color="blue darken-1"
@@ -65,6 +64,9 @@ export default {
   }),
 
   methods: {
+    test() {
+      console.log('test');
+    },
     upgrade() {
       const item = {
         id: this.task.id,

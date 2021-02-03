@@ -35,6 +35,11 @@ body {
     margin-top: 15px !important;
 }
 .inside-icon {
-    cursor: pointer;
     margin: 5px;
+}
+.btn-action {
+    right: 10px;
+}
+.v-dialog {
+    box-shadow: none !important;
 }
