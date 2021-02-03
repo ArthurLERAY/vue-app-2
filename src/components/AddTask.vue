@@ -107,6 +107,7 @@ export default {
       }
       this.taskTitle = "";
       this.taskDesc = "";
+      this.selectedTypes = [];
     }
   }
 
