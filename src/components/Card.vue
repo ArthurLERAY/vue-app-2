@@ -79,7 +79,8 @@ export default {
         id: this.task.id,
         title: this.task.title,
         desc: this.task.desc,
-        color: this.nextStateConf.color
+        color: this.nextStateConf.color,
+        taskTypes: this.task.taskTypes
       };
       this.nextState.push(item);
       this.deleteTask();
