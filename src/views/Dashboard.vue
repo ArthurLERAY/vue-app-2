@@ -12,7 +12,7 @@
         <div data-app>
           <AddTask :todo="todo" :index="index" :state="todoState" />
         </div>
-        <v-list>
+        <v-list v-model="todo">
           <Card v-for="task of todo" :currentState="todo" :nextState="inProgress" :nextStateConf="inProgressState" v-bind:key="task.id" :task="task" />
         </v-list>
       </v-col>
@@ -22,7 +22,7 @@
         <div data-app>
           <AddTask :todo="inProgress" :index="index" :state="inProgressState" />
         </div>
-        <v-list>
+        <v-list v-model="inProgress">
           <Card v-for="task of inProgress" :currentState="inProgress" :nextState="finished" :nextStateConf="finishedState" v-bind:key="task.id" :task="task" />
         </v-list>
       </v-col>
@@ -32,7 +32,7 @@
         <div data-app>
           <AddTask :todo="finished" :index="index" :state="finishedState" />
         </div>
-        <v-list>
+        <v-list v-model="finished">
           <Card v-for="task of finished" :currentState="finished" :isLast="true" :key="task.id" :task="task" />
         </v-list>
       </v-col>
@@ -54,15 +54,12 @@ export default {
     index: 2,
     todoState: {
       label: "todo",
-      color: "blue"
     },
     inProgressState: {
       label: "inProgress",
-      color: "orange"
     },
     finishedState: {
       label: "finished",
-      color: "green"
     },
     todo: [
       {
@@ -70,7 +67,7 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 1",
-        color: 'blue',
+        priority: 'red',
         taskTypes: [
           {
             id: 1,
@@ -93,7 +90,7 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 2",
-        color: 'orange',
+        priority: 'green',
         taskTypes: []
       }
     ],
@@ -103,7 +100,7 @@ export default {
         title: 'Exemple de titre',
         desc: 'Exemple de description',
         author: "Author 1",
-        color: 'green',
+        priority: 'red',
         taskTypes: []
       }
     ],

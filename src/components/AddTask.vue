@@ -59,7 +59,7 @@
         </v-card>
       </v-col>
       <v-col cols="5">
-        <ChipGroup :tags="taskTypes" :color="state.color" :selectedTypes="selectedTypes"/>
+        <ChipGroup :tags="taskTypes" color="#5e5e5e" :selectedTypes="selectedTypes"/>
       </v-col>
     </v-row>
   </v-dialog>
@@ -76,6 +76,7 @@ export default {
     taskTitle: "",
     taskDesc: "",
     taskAuthor: "",
+    taskPriority: "",
     taskTypes: [
       {
         id: 1,
@@ -100,7 +101,7 @@ export default {
   methods: {
     validate() {
       if (this.taskTitle.length > 0 && this.taskDesc.length > 0) {
-        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, author: this.taskAuthor, color: this.state.color, taskTypes: this.selectedTypes}
+        const item = {id: this.index+1, title: this.taskTitle, desc: this.taskDesc, author: this.taskAuthor, priority: this.taskPriority, taskTypes: this.selectedTypes}
         this.index++;
         this.todo.push(item);
         this.dialog = false;

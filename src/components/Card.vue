@@ -13,14 +13,14 @@
       </draggable>
     </template>
     <v-row>
-      <v-col cols="3">
+      <v-col cols="2">
         <v-card>
-          <v-tooltip bottom v-if="isLast !== true">
-            <template v-slot:activator="{ on }">
-              <v-btn icon @click="upgrade" v-on="on" class="inside-icon"><v-icon>mdi-arrow-up-box</v-icon></v-btn>
-            </template>
-            <span>Upgrade la tâche</span>
-          </v-tooltip>
+<!--          <v-tooltip bottom v-if="isLast !== true">-->
+<!--            <template v-slot:activator="{ on }">-->
+<!--              <v-btn icon @click="upgrade" v-on="on" class="inside-icon"><v-icon>mdi-arrow-up-box</v-icon></v-btn>-->
+<!--            </template>-->
+<!--            <span>Upgrade la tâche</span>-->
+<!--          </v-tooltip>-->
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
               <v-btn icon @click="deleteTask" v-on="on" class="inside-icon"><v-icon>mdi-delete</v-icon></v-btn>
@@ -78,19 +78,19 @@ export default {
   }),
 
   methods: {
-    upgrade() {
-      const item = {
-        id: this.task.id,
-        title: this.task.title,
-        desc: this.task.desc,
-        author: this.task.author,
-        color: this.nextStateConf.color,
-        taskTypes: this.task.taskTypes
-      };
-      this.nextState.push(item);
-      this.deleteTask();
-      this.dialog = false;
-    },
+    // upgrade() {
+    //   const item = {
+    //     id: this.task.id,
+    //     title: this.task.title,
+    //     desc: this.task.desc,
+    //     author: this.task.author,
+    //     color: this.nextStateConf.color,
+    //     taskTypes: this.task.taskTypes
+    //   };
+    //   this.nextState.push(item);
+    //   this.deleteTask();
+    //   this.dialog = false;
+    // },
     deleteTask() {
       for (let task of this.currentState) {
         if (task.id === this.task.id) {
@@ -100,13 +100,13 @@ export default {
       }
     },
     checkCurrentCol() {
-      console.log('Card successfully moved');
+      // console.log('Dragged');
     },
   },
   computed: {
     lineColor() {
       return {
-        'border-top': 'solid 2px ' + this.task.color
+        'border-top': 'solid 2px ' + this.task.priority
       }
     }
   },
