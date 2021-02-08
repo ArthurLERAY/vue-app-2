@@ -1,8 +1,15 @@
 <template>
   <v-container>
     <v-row class="justify-center title-wrapper">
-      <v-col cols="12">
+      <v-col cols="5">
         <h1>Mon projet</h1>
+      </v-col>
+      <v-col v-if="showDelete" cols="3">
+        <span style="color :red;">Supprimer la tâche <v-icon>mdi-delete</v-icon></span>
+        <v-list v-model="toDelete">
+          <draggable group="tasks" style="min-height: 10px; max-height: 10px; visibility: hidden;">
+          </draggable>
+        </v-list>
       </v-col>
     </v-row>
     <v-divider></v-divider>
@@ -12,8 +19,8 @@
         <div data-app>
           <AddTask :todo="todo" :index="index" :state="todoState" />
         </div>
-        <v-list v-model="todo">
-          <Card v-for="task of todo" :currentState="todo" :nextState="inProgress" :nextStateConf="inProgressState" v-bind:key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of todo" :currentState="todo" :nextState="inProgress" :nextStateConf="inProgressState" v-bind:key="task.id" :task="task" @dragStarted="showDeleteBtn" @dragEnded="hideDeleteBtn" />
         </v-list>
       </v-col>
       <v-col cols="1"></v-col>
@@ -22,8 +29,8 @@
         <div data-app>
           <AddTask :todo="inProgress" :index="index" :state="inProgressState" />
         </div>
-        <v-list v-model="inProgress">
-          <Card v-for="task of inProgress" :currentState="inProgress" :nextState="finished" :nextStateConf="finishedState" v-bind:key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of inProgress" :currentState="inProgress" :nextState="finished" :nextStateConf="finishedState" v-bind:key="task.id" :task="task" @dragStarted="showDeleteBtn" @dragEnded="hideDeleteBtn" />
         </v-list>
       </v-col>
       <v-col cols="1"></v-col>
@@ -32,8 +39,8 @@
         <div data-app>
           <AddTask :todo="finished" :index="index" :state="finishedState" />
         </div>
-        <v-list v-model="finished">
-          <Card v-for="task of finished" :currentState="finished" :isLast="true" :key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of finished" :currentState="finished" :isLast="true" :key="task.id" :task="task" @dragStarted="showDeleteBtn" @dragEnded="hideDeleteBtn" />
         </v-list>
       </v-col>
 
@@ -44,6 +51,7 @@
 <script>
 import AddTask from "@/components/AddTask";
 import Card from "@/components/Card";
+import draggable from "vuedraggable";
 
 export default {
   name: "Dashboard",
@@ -108,11 +116,24 @@ export default {
         taskTypes: []
       }
     ],
+    showDelete: false,
+    toDelete: [],
   }),
+
+  methods: {
+    showDeleteBtn() {
+      this.showDelete = true;
+    },
+    hideDeleteBtn() {
+      this.showDelete = false;
+      console.log(this.toDelete);
+    }
+  },
 
   components: {
     AddTask,
     Card,
+    draggable
   },
 }
 </script>

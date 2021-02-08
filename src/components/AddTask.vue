@@ -26,6 +26,9 @@
                 <v-col cols="6">
                   <v-text-field label="Auteur" required v-model="taskAuthor"></v-text-field>
                 </v-col>
+                <v-col cols="6">
+                  <v-select :items="taskPriorities" item-text="label" item-value="value" label="Priorité" required v-model="taskPriority"></v-select>
+                </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12">
@@ -91,7 +94,23 @@ export default {
         label: "Review de code",
       }
     ],
-    selectedTypes: []
+    selectedTypes: [],
+    taskPriorities: [
+      {
+        id: 1,
+        label: "Basse",
+        value: "green"
+      }, {
+        id: 2,
+        label: "Moyenne",
+        value: "orange"
+      },
+      {
+        id: 3,
+        label: "Haute",
+        value: "red"
+      }
+    ]
   }),
 
   components: {

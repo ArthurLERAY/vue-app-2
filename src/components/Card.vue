@@ -5,7 +5,7 @@
       content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
-      <draggable group="tasks" style="min-height: 100px" @start="beginDrag">
+      <draggable group="tasks" style="min-height: 100px" @start="beginDrag" @end="endDrag">
         <v-card v-on="on" tile :class="dragClass + ' inside-card'" :style="lineColor">
           <v-card-title>{{ task.title }}</v-card-title>
           <v-card-text>{{ task.desc }}</v-card-text>
@@ -94,7 +94,9 @@ export default {
     // },
     deleteTask() {
       for (let task of this.currentState) {
+        console.log(`flyTaskId: ${task.id}, this.task.id: ${this.task.id}`);
         if (task.id === this.task.id) {
+          console.log(`flyTaskId: ${task.id}, this.task.id: ${this.task.id}`);
           const index = this.currentState.indexOf(task);
           this.currentState.splice(index, 1);
         }
@@ -102,7 +104,11 @@ export default {
     },
     beginDrag() {
       this.dragClass = "beginDrag";
+      this.$emit('dragStarted');
     },
+    endDrag() {
+      this.$emit('dragEnded');
+    }
   },
   computed: {
     lineColor() {
