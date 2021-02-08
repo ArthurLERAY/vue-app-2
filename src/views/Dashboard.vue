@@ -44,7 +44,6 @@
 <script>
 import AddTask from "@/components/AddTask";
 import Card from "@/components/Card";
-// import draggable from "vuedraggable";
 
 export default {
   name: "Dashboard",
@@ -91,7 +90,12 @@ export default {
         desc: 'Exemple de description',
         author: "Author 2",
         priority: 'green',
-        taskTypes: []
+        taskTypes: [
+          {
+            id: 3,
+            label: "Review de code",
+          }
+        ]
       }
     ],
     finished: [
@@ -109,7 +113,6 @@ export default {
   components: {
     AddTask,
     Card,
-    // draggable
   },
 }
 </script>

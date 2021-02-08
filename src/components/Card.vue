@@ -5,8 +5,8 @@
       content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
-      <draggable group="tasks" style="min-height: 100px" @end="checkCurrentCol">
-        <v-card v-on="on" tile class="inside-card" :style="lineColor">
+      <draggable group="tasks" style="min-height: 100px" @start="beginDrag">
+        <v-card v-on="on" tile :class="dragClass + ' inside-card'" :style="lineColor">
           <v-card-title>{{ task.title }}</v-card-title>
           <v-card-text>{{ task.desc }}</v-card-text>
         </v-card>
@@ -75,6 +75,7 @@ export default {
 
   data: () => ({
     dialog: false,
+    dragClass: ""
   }),
 
   methods: {
@@ -99,8 +100,8 @@ export default {
         }
       }
     },
-    checkCurrentCol() {
-      // console.log('Dragged');
+    beginDrag() {
+      this.dragClass = "beginDrag";
     },
   },
   computed: {
