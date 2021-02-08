@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body {
+    font-family: 'Montserrat', sans-serif;
+    word-break: break-word;
+}
+.title-wrapper {
+    margin-top: 150px !important;
+    margin-bottom: 15px !important;
+}
+.login-card {
+    padding: 40px;
+    min-width: 30rem;
+}
+.submit-login {
+    background-color: #3990f0 !important;
+    color: white !important;
+}
+.text-center {
+    text-align: center;
+}
+.float-left {
+    float: left !important;
+}
+.float-right {
+    float: right !important;
+}
+.col-area {
+    margin-top: 15px !important;
+}
+.wrapper-card {
+    padding: 10px 0 10px 0;
+}
+.inside-card {
+    margin: auto;
+    margin-top: 15px !important;
+}
+.inside-icon {
+    margin: 5px;
+}
+.btn-action {
+    right: 10px;
+}
+.v-dialog {
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+.t-xl {
+    border-radius: 30px;
+}
+.pa-4 {
+    padding: 4px;
+}
+.rounded-sheet {
+    border-radius: 12px !important;
+}
+.rounded-top-sheet {
+    border-radius: 12px 12px 0 0 !important;
+}
+.primary--text {
+    color: #1867c0 !important;
+    caret-color: #1867c0 !important;
+}
+.card-task-types {
+    padding: 5px;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.card-task-types .v-chip {
+    margin: 2px !important;
+}
+
+@keyframes wiggle {
+    2% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    4% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    6% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg);
+    }
+    8% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    10% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    12% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    14% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg);
+    }
+    16% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    18% {
+        -webkit-transform: translateX(1px) rotate(0);
+        transform: translateX(1px) rotate(0);
+    }
+    20% {
+        -webkit-transform: translateX(-1px) rotate(0);
+        transform: translateX(-1px) rotate(0);
+    }
+}
+
+.beginDrag {
+    animation: wiggle 6s ease forwards;
+}
