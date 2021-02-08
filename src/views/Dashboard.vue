@@ -12,7 +12,9 @@
         <div data-app>
           <AddTask :todo="todo" :index="index" :state="todoState" />
         </div>
-        <Card v-for="task of todo" :currentState="todo" :nextState="inProgress" :nextStateConf="inProgressState" v-bind:key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of todo" :currentState="todo" :nextState="inProgress" :nextStateConf="inProgressState" v-bind:key="task.id" :task="task" />
+        </v-list>
       </v-col>
       <v-col cols="1"></v-col>
       <v-col cols="3">
@@ -20,7 +22,9 @@
         <div data-app>
           <AddTask :todo="inProgress" :index="index" :state="inProgressState" />
         </div>
-        <Card v-for="task of inProgress" :currentState="inProgress" :nextState="finished" :nextStateConf="finishedState" v-bind:key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of inProgress" :currentState="inProgress" :nextState="finished" :nextStateConf="finishedState" v-bind:key="task.id" :task="task" />
+        </v-list>
       </v-col>
       <v-col cols="1"></v-col>
       <v-col cols="3">
@@ -28,7 +32,9 @@
         <div data-app>
           <AddTask :todo="finished" :index="index" :state="finishedState" />
         </div>
-        <Card v-for="task of finished" :currentState="finished" :isLast="true" v-bind:key="task.id" :task="task" />
+        <v-list>
+          <Card v-for="task of finished" :currentState="finished" :isLast="true" :key="task.id" :task="task" />
+        </v-list>
       </v-col>
 
     </v-row>
@@ -38,6 +44,8 @@
 <script>
 import AddTask from "@/components/AddTask";
 import Card from "@/components/Card";
+// import draggable from "vuedraggable";
+
 export default {
   name: "Dashboard",
 
@@ -104,6 +112,7 @@ export default {
   components: {
     AddTask,
     Card,
+    // draggable
   },
 }
 </script>

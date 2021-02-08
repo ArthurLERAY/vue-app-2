@@ -5,10 +5,12 @@
       content-class="v-dialog"
   >
     <template v-slot:activator="{ on }">
-      <v-card v-on="on" tile class="inside-card" :style="lineColor">
-        <v-card-title>{{ task.title }}</v-card-title>
-        <v-card-text>{{ task.desc }}</v-card-text>
-      </v-card>
+      <draggable group="tasks" style="min-height: 100px" @end="checkCurrentCol">
+        <v-card v-on="on" tile class="inside-card" :style="lineColor">
+          <v-card-title>{{ task.title }}</v-card-title>
+          <v-card-text>{{ task.desc }}</v-card-text>
+        </v-card>
+      </draggable>
     </template>
     <v-row>
       <v-col cols="3">
@@ -64,6 +66,8 @@
 
 <script>
 import TaskTypeList from "@/components/TaskTypeList";
+import draggable from "vuedraggable";
+
 export default {
   name: "Card",
 
@@ -94,7 +98,10 @@ export default {
           this.currentState.splice(index, 1);
         }
       }
-    }
+    },
+    checkCurrentCol() {
+      console.log('Card successfully moved');
+    },
   },
   computed: {
     lineColor() {
@@ -104,7 +111,8 @@ export default {
     }
   },
   components: {
-    TaskTypeList
+    TaskTypeList,
+    draggable
   }
 }
 </script>
